@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PulseBoard Dashboard</title>
+<link rel="stylesheet" href="bootstrap.css">
+<style>
+body{
+    background:#f5f7fb;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard{
+    max-width:1200px;
+    margin:40px auto;
+    border-radius:18px;
+    overflow:hidden;
+    background:#eef2f7;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+}
+
+.sidebar{
+    background:#11182e;
+    min-height:650px;
+    color:white;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+    padding:25px 20px;
+}
+
+.sidebar .nav-link{
+    color:#98a2b3;
+    margin:6px 12px;
+    border-radius:10px;
+    padding:12px 15px;
+    font-weight:500;
+}
+
+.sidebar .nav-link.active{
+    background:#242f63;
+    color:white;
+}
+
+.badge-alert{
+    background:#ef4444;
+    border-radius:50%;
+    width:22px;
+    height:22px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+}
+
+.main-content{
+    padding:30px;
+}
+
+.header-title{
+    font-weight:700;
+    margin-bottom:0;
+}
+
+.sub-text{
+    color:#6b7280;
+    font-size:14px;
+}
+
+.metric-card{
+    background:white;
+    border:none;
+    border-radius:16px;
+    padding:18px;
+    height:100%;
+}
+
+.metric-title{
+    color:#6b7280;
+    font-size:12px;
+    font-weight:600;
+    text-transform:uppercase;
+}
+
+.metric-value{
+    font-size:42px;
+    font-weight:700;
+    line-height:1;
+}
+
+.progress{
+    height:8px;
+    border-radius:10px;
+}
+
+.service-card,
+.alert-card{
+    background:white;
+    border:none;
+    border-radius:16px;
+    padding:20px;
+    height:100%;
+}
+
+.service-row{
+    padding:10px 0;
+    border-bottom:1px solid #ececec;
+}
+
+.service-row:last-child{
+    border-bottom:none;
+}
+
+.status{
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.operational{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.degraded{
+    background:#fef3c7;
+    color:#b45309;
+}
+
+.down{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.alert-label{
+    font-size:11px;
+    font-weight:700;
+    padding:4px 8px;
+    border-radius:5px;
+    color:white;
+}
+
+.crit{
+    background:#ef4444;
+}
+
+.warn{
+    background:#f59e0b;
+}
+
+.info{
+    background:#94a3b8;
+}
+
+.footer-text{
+    color:#9ca3af;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+    <div class="row g-0">
+
+
+        <div class="col-lg-2 sidebar">
+
+            <div class="logo">
+                ● PulseBoard
+            </div>
+
+            <nav class="nav flex-column">
+                <a href="#" class="nav-link active">
+                    📊 Overview
+                </a>
+
+                <a href="#" class="nav-link">
+                    ⚙ Services
+                </a>
+
+                <a href="#" class="nav-link d-flex justify-content-between align-items-center">
+                    <span>⚠ Alerts</span>
+                    <span class="badge-alert">3</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    📁 Logs
+                </a>
+
+                <a href="#" class="nav-link">
+                    ⚙ Settings
+                </a>
+            </nav>
+
+        </div>
+
+        
+        <div class="col-lg-10">
+            <div class="main-content">
+
+                
+                <div class="d-flex justify-content-between align-items-start mb-4">
+
+                    <div>
+                        <h2 class="header-title">
+                            Infrastructure Overview
+                        </h2>
+
+                        <div class="sub-text">
+                            Region <strong>ap-south-1</strong> ·
+                            12 hosts · auto-refresh paused
+                        </div>
+                    </div>
+
+                    <div class="text-end">
+                        <small class="text-muted d-block mb-2">
+                            Last updated just now
+                        </small>
+
+                        <button class="btn btn-primary btn-sm">
+                            Refresh
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <div class="row g-3 mb-4">
+
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-title">CPU Load</div>
+                            <div class="metric-value">72%</div>
+
+                            <div class="progress my-3">
+                                <div class="progress-bar bg-warning"
+                                     style="width:72%">
+                                </div>
+                            </div>
+
+                            <small class="text-muted">
+                                avg across 12 cores
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-title">Memory</div>
+                            <div class="metric-value">58%</div>
+
+                            <div class="progress my-3">
+                                <div class="progress-bar bg-secondary"
+                                     style="width:58%">
+                                </div>
+                            </div>
+
+                            <small class="text-muted">
+                                37.1 / 64 GB used
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-title">Disk I/O</div>
+                            <div class="metric-value">88%</div>
+
+                            <div class="progress my-3">
+                                <div class="progress-bar bg-danger"
+                                     style="width:88%">
+                                </div>
+                            </div>
+
+                            <small class="text-muted">
+                                nearing capacity
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-title">Network</div>
+                            <div class="metric-value">34%</div>
+
+                            <div class="progress my-3">
+                                <div class="progress-bar bg-success"
+                                     style="width:34%">
+                                </div>
+                            </div>
+
+                            <small class="text-muted">
+                                412 Mbps inbound
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+                <div class="row g-3">
+    
+                
+                    <div class="col-lg-7">
+
+                        <div class="service-card">
+
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="fw-bold">
+                                    Services
+                                </h5>
+
+                                <span class="text-muted">
+                                    6 monitored
+                                </span>
+                            </div>
+
+                            <div class="service-row d-flex justify-content-between align-items-center">
+                                <div>
+                                    🟢 api-gateway
+                                    <small class="text-muted">web-01</small>
+                                </div>
+                                <div>
+                                    <span class="me-3 text-muted">42 ms</span>
+                                    <span class="status operational">
+                                        Operational
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="service-row d-flex justify-content-between align-items-center">
+                                <div>
+                                    🟢 auth-service
+                                    <small class="text-muted">web-02</small>
+                                </div>
+                                <div>
+                                    <span class="me-3 text-muted">61 ms</span>
+                                    <span class="status operational">
+                                        Operational
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="service-row d-flex justify-content-between align-items-center">
+                                <div>
+                                    🟡 payments
+                                    <small class="text-muted">pay-01</small>
+                                </div>
+                                <div>
+                                    <span class="me-3 text-muted">310 ms</span>
+                                    <span class="status degraded">
+                                        Degraded
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="service-row d-flex justify-content-between align-items-center">
+                                <div>
+                                    🔴 db-primary
+                                    <small class="text-muted">db-01</small>
+                                </div>
+                                <div>
+                                    <span class="me-3 text-muted">timeout</span>
+                                    <span class="status down">
+                                        Down
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="service-row d-flex justify-content-between align-items-center">
+                                <div>
+                                    🟢 search
+                                    <small class="text-muted">srch-01</small>
+                                </div>
+                                <div>
+                                    <span class="me-3 text-muted">88 ms</span>
+                                    <span class="status operational">
+                                        Operational
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="service-row d-flex justify-content-between align-items-center">
+                                <div>
+                                    🟢 cdn-edge
+                                    <small class="text-muted">edge-09</small>
+                                </div>
+                                <div>
+                                    <span class="me-3 text-muted">19 ms</span>
+                                    <span class="status operational">
+                                        Operational
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    
+                    <div class="col-lg-5">
+
+                        <div class="alert-card">
+
+                            <h5 class="fw-bold mb-4">
+                                Recent Alerts
+                            </h5>
+
+                            <div class="mb-3">
+                                <span class="alert-label crit">
+                                    CRIT
+                                </span>
+
+                                Disk I/O above 85% on
+                                <strong>db-primary</strong>
+
+                                <div class="small text-muted">
+                                    2 min ago
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="alert-label warn">
+                                    WARN
+                                </span>
+
+                                CPU spike on
+                                <strong>web-03</strong>
+
+                                <div class="small text-muted">
+                                    14 min ago
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="alert-label info">
+                                    INFO
+                                </span>
+
+                                Auto-scaling added
+                                <strong>1 node</strong>
+
+                                <div class="small text-muted">
+                                    38 min ago
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="footer-text mt-4">
+                    PulseBoard · demo data · built with Bootstrap 
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
